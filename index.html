@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Game in Virtual Reality</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>   
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    
+    <script src="./bowl.js"></script>
+  </head>
+  <body>
+    <a-scene id="scene">
+
+      <!--Assets-->
+      <a-assets>        
+        <a-asset-item
+          id="bowl"
+          src="./models/assets/bowling_ball/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+        id="pin"
+        src="./models/assets/bowling_pin/scene.gltf"
+      ></a-asset-item>
+        
+      </a-assets>
+      
+      <!--Light-->
+      <a-entity light="type: ambient; color: yellow; intensity:0.5"></a-entity>
+
+      <!--Camera and Cursor-->
+      <a-entity
+        id="camera"
+        camera
+        position="0 1.6 0"
+        wasd-controls
+        look-controls="pointerLockEnabled: false"        
+      >
+        <a-entity
+            id="bowl"
+            gltf-model="#bowl"
+            position="0 -4.4 3"
+            rotation="0 180 0"
+            scale="0.35 1 1"          
+          >
+        </a-entity>
+        <a-cursor></a-cursor>        
+      </a-entity>
+
+      <!--bowl-->
+      <a-entity bowl></a-entity>
+
+      <!--Ground-->
+      <a-plane
+        id="ground"
+        repeat="5 5"
+        position="0 1 0"
+        rotation="-90 0 0"
+        height="200"
+        width="200"
+        color="grey"
+        static-body
+        visible="true"
+      >
+      </a-plane>
+
+      <!--Bowling Pin-->
+      <a-pin position="-2 1.5 -10" color="white" src = "./model/assets/bowling_pin/scene.gltf"></a-pin>
+
+      <a-pin position="-3 1.5 -10" color="white" src = "./model/assets/bowling_pin/scene.gltf"></a-pin>
+
+      <a-pin position="1 1.5 -10" color="white" src = "./model/assets/bowling_pin/scene.gltf"></a-pin>
+
+      <a-pin position="-3 2.0 -10" color="white" src = "./model/assets/bowling_pin/scene.gltf"></a-pin>
+
+      <a-pin position="1 1.0 -10" color="white" src = "./model/assets/bowling_pin/scene.gltf"></a-pin>
+
+      <a-pin position="-2 3.0 -10" color="white" src = "./model/assets/bowling_pin/scene.gltf"></a-pin>
+
+       <!--Walls-->
+       <a-box id="wall1" position="-20 1.5 -20" color="red" depth="1" height="50" width="20" static-body></a-box>
+
+       <a-box id="wall2" position="0 1.5 -20" color="black" depth="1" height="50" width="20" static-body></a-box>
+ 
+       <a-box id="wall3" position="20 1.5 -20" color="grey" depth="1" height="50" width="20" static-body></a-box>
+ 
+       <a-box id="wall4" position="-10 1.5 -20" color="red" depth="1" height="50" width="20" opacity = "0.5"></a-box>
+    </a-scene>
+  </body>
+</html>
